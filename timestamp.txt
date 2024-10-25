@@ -1,0 +1,6 @@
+Timestamp:  01:33:05
+Source: https://www.youtube.com/watch?v=kRQbRAJ4-Fs&t=550s&ab_channel=JavaScriptMastery
+
+
+Notes:
+Failed to fetch all prompts
