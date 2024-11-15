@@ -1,4 +1,4 @@
-Timestamp:  02:34:40
+Timestamp:  02:37:40
 Source: https://www.youtube.com/watch?v=kRQbRAJ4-Fs&t=550s&ab_channel=JavaScriptMastery
 
 
@@ -6,4 +6,3 @@ Notes:
 * relearn about videoCarousel concept
 
 issue:
-IPhone.jsx have an issue
