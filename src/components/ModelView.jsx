@@ -18,8 +18,10 @@ const ModelView = ({
 	return (
 		<View
 			index={index}
-			id={gsapType}
-			className={`w-full h-full absolute ${index === 2 ? 'right-[100%]' : ''}`}
+			id={`view${index}`}
+			className={`w-full h-full absolute ${
+				index === 2 ? 'translate-x-full' : ''
+			}`}
 		>
 			{/* Ambient Light */}
 			<ambientLight intensity={0.3} />
@@ -38,7 +40,7 @@ const ModelView = ({
 
 			<group
 				ref={groupRef}
-				name={`${index === 1} ? 'small' : 'large`}
+				name={index === 1 ? 'small' : 'large'}
 				position={[0, 0, 0]}
 			>
 				<Suspense fallback={<Loader />}>

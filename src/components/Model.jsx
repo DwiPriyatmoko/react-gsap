@@ -34,20 +34,28 @@ const Model = () => {
 	const tl = gsap.timeline();
 
 	useEffect(() => {
+		// Clear the timeline before creating new animations
+		tl.clear();
+
 		if (size === 'large') {
 			animateWithGsapTimeline(tl, small, smallRotation, '#view1', '#view2', {
 				transform: 'translateX(-100%)',
-				duration: 2,
+				duration: 1,
 			});
 		}
 
 		if (size === 'small') {
 			animateWithGsapTimeline(tl, large, largeRotation, '#view2', '#view1', {
 				transform: 'translateX(0)',
-				duration: 2,
+				duration: 1,
 			});
 		}
-	}, [size]);
+
+		// Cleanup function
+		return () => {
+			tl.clear();
+		};
+	}, [size, smallRotation, largeRotation]);
 
 	useGSAP(() => {
 		gsap.to('#heading', { y: 0, opacity: 1, duration: 1 });
@@ -61,22 +69,24 @@ const Model = () => {
 				</h1>
 				<div className="flex flex-col items-center mt-5">
 					<div className="w-full h-[75vh] md:h[90vh] overflow-hidden relative">
-						<ModelView
-							index={1}
-							groupRef={small}
-							controlRef={cameraControlSmall}
-							setRotationState={setSmallRotation}
-							item={model}
-							size={size}
-						/>
-						<ModelView
-							index={2}
-							groupRef={large}
-							controlRef={cameraControlLarge}
-							setRotationState={setLargeRotation}
-							item={model}
-							size={size}
-						/>
+						<div className="absolute top-0 left-0 w-full h-full">
+							<ModelView
+								index={1}
+								groupRef={small}
+								controlRef={cameraControlSmall}
+								setRotationState={setSmallRotation}
+								item={model}
+								size={size}
+							/>
+							<ModelView
+								index={2}
+								groupRef={large}
+								controlRef={cameraControlLarge}
+								setRotationState={setLargeRotation}
+								item={model}
+								size={size}
+							/>
+						</div>
 						<Canvas
 							className="w-full h-full"
 							style={{
